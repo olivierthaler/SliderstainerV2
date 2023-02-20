@@ -50,6 +50,7 @@ void setup() {
   SCmd.addCommand("Ready", check_move_complete);
   SCmd.addCommand("Position", check_position);
   SCmd.addCommand("completed?", is_complete);
+  SCmd.addCommand("W", soaking);
   SCmd.addDefaultHandler(unrecognized);
 
   Serial.begin(115200);
@@ -225,11 +226,14 @@ void is_complete() {
   }
 
 void check_position() {
-  //TODO have it memorize the angles measured by the magnets
   for (int i = 0; i < 3; i++){stepperPos[i] = steppers[i].currentPosition();}
   Serial.println(String(stepperPos[0]) + " " + String(stepperPos[1]) + " " + String(stepperPos[2]) );
 }
 
 void ServoGripper() {
     //TODO write gripper routine
+}
+
+void soaking() {
+    //TODO write waiting routine
 }
